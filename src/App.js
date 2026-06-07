@@ -261,7 +261,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <ScrollToTop />
         <Navbar />
         <main>
