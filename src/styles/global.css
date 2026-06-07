@@ -1,0 +1,370 @@
+/* ================================================================
+   DANIEL HAILE PORTFOLIO — GLOBAL STYLES
+   Aesthetic: Refined dark-editorial with amber accent
+   Fonts: Playfair Display (display) + DM Sans (body) + JetBrains Mono (code)
+================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Theme Variables ── */
+:root {
+  --amber-50: #FAEEDA;
+  --amber-100: #FAC775;
+  --amber-200: #EF9F27;
+  --amber-400: #BA7517;
+  --amber-600: #854F0B;
+  --amber-800: #633806;
+
+  --navy-900: #060b18;
+  --navy-800: #0a0f1e;
+  --navy-700: #0e1628;
+  --navy-600: #141e35;
+  --navy-500: #1b2847;
+  --navy-400: #243158;
+  --navy-300: #2e3d6e;
+
+  --slate-100: #e8ecf5;
+  --slate-200: #c8d0e4;
+  --slate-300: #a0adc7;
+  --slate-400: #6b7ba0;
+  --slate-500: #4a5578;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  --shadow-glow: 0 0 40px rgba(239, 159, 39, 0.12);
+  --shadow-card: 0 4px 32px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* ── DARK THEME (default) ── */
+[data-theme="dark"] {
+  --bg-primary: #060b18;
+  --bg-secondary: #0a0f1e;
+  --bg-card: #0e1628;
+  --bg-card-hover: #141e35;
+  --bg-glass: rgba(14, 22, 40, 0.8);
+
+  --text-primary: #e8ecf5;
+  --text-secondary: #a0adc7;
+  --text-muted: #6b7ba0;
+  --text-accent: #EF9F27;
+  --text-accent-hover: #FAC775;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-normal: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(239, 159, 39, 0.3);
+
+  --nav-bg: rgba(6, 11, 24, 0.92);
+  --hero-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(239, 159, 39, 0.08) 0%, transparent 70%);
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg-primary: #f6f4f0;
+  --bg-secondary: #ede9e2;
+  --bg-card: #ffffff;
+  --bg-card-hover: #faf8f5;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #0e1628;
+  --text-secondary: #3d4a6b;
+  --text-muted: #6b7ba0;
+  --text-accent: #BA7517;
+  --text-accent-hover: #854F0B;
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-normal: rgba(0, 0, 0, 0.1);
+  --border-accent: rgba(186, 117, 23, 0.3);
+
+  --nav-bg: rgba(246, 244, 240, 0.92);
+  --hero-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(186, 117, 23, 0.07) 0%, transparent 70%);
+
+  --shadow-glow: 0 0 40px rgba(186, 117, 23, 0.1);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  transition: background-color var(--transition-base), color var(--transition-base);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ── Typography ── */
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-normal);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(239, 159, 39, 0.25);
+  color: var(--text-primary);
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-content {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 159, 39, 0.3); }
+  50%       { box-shadow: 0 0 0 8px rgba(239, 159, 39, 0); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Section Headers ── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--text-accent);
+  color: var(--navy-900);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+  background: var(--text-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-normal);
+  transition: all var(--transition-base);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+  transform: translateY(-2px);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 4rem 0;
+}
+
+/* ── Tag / Badge ── */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  background: rgba(239, 159, 39, 0.1);
+  color: var(--text-accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 100px;
+  border: 1px solid var(--border-accent);
+  font-family: var(--font-mono);
+}
+
+[data-theme="light"] .tag {
+  background: rgba(186, 117, 23, 0.08);
+}
+
+/* ── Page transition ── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
